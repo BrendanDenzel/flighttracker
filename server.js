@@ -71,6 +71,7 @@ app.get(/.*/, async (req, res) => {
 
     res.status(upstreamRes.status).type("application/json").send(text);
   } catch (err) {
+    console.error("Proxy error for", path, "->", err);
     res.status(502).json({ error: err.message });
   }
 });
